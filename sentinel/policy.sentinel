@@ -1,0 +1,8 @@
+import "tfplan/v2" as tfplan
+
+# Дозволяємо лише ресурси у us-east-1
+main = rule {
+    all tfplan.resources.aws_s3_bucket as bucket {
+        bucket.applied.provider_config_key contains "us-east-1"
+    }
+}
